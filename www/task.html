@@ -23,20 +23,17 @@
   </head>
 
   <body ng-controller="Tasks">
-      <div class="bar bar-header bar-calm">
-      <h1 class="title">Home</h1>
-    </div>
     <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
         <div class="tabs">
-          <a class="tab-item active" href="#">
+          <a class="tab-item" href="index.html">
             <i class="icon ion-home"></i>
             Home
           </a>
           <a class="tab-item" href="new.html">
             <i class="icon ion-ios-compose"></i>
-            New Task
+            New task
           </a>
-          <a class="tab-item" href="task.html">
+          <a class="tab-item active" href="#">
             <i class="icon ion-ios-time"></i>
             Tasks
           </a>
@@ -46,33 +43,19 @@
           </a>
         </div>
       </div>
+      <br><br><br><br><br>
 
-
-    <br><br><br><br><br>
+      <div class="bar bar-header bar-calm">
+      <h1 class="title">Tasks</h1>
+    </div>
     <div class="list">
-
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-ios-compose"></i>
-        New Task
-      </a>
-
-      <a class="item item-icon-left item-icon-right" href="#">
-        <i class="icon ion-ios-alarm"></i>
-        Tasks
-        <span class="badge badge-assertive" ng-init="filter_len = (tasks | filter: { status : tasksIncomplete }).length" ng-repeat="task in tasks | filter: { status : tasksIncomplete }">{{filter_len}}</span>
-      </a>
-
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-ios-list"></i>
-        Tasks Finish
-        <span class="badge badge-assertive" ng-init="filter_len = (tasks | filter: { status : tasksComplete }).length" ng-repeat="task in tasks | filter: { status : tasksComplete }">{{filter_len}}</span>
-      </a>
-
+      <div class="item item-button-right" ng-repeat="task in tasks" ng-if="task.status === false">
+        {{task.body}} 
+        <button class="button button-positive" ng-click="updateTask(task.id, task.status = true)">
+          <i class="icon ion-checkmark"></i>
+        </button>
+      </div>
     </div>
 
-
-
-  
-
   </body>
-</html>
+  </html>

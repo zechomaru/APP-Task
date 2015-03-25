@@ -11,7 +11,7 @@ angular.module('starter', ['ionic'])
     $scope.tasksIncomplete = false;
     $scope.tasksComplete = true;
 
-    $http.get('http://190.39.179.26:3000/tasks')
+    $http.get('http://192.168.0.137:3000/tasks')
       .success(function(data) {
         console.log(data);
         $scope.tasks = data;
@@ -21,7 +21,7 @@ angular.module('starter', ['ionic'])
         // or server returns response with an error status.
         });
         $scope.addTask = function(){
-          $http.post('http://190.39.179.26:3000/tasks', {
+          $http.post('http://192.168.0.137:3000/tasks', {
             body: $scope.newTask.body
           })
           .success(function(data, status, headers, config) {
@@ -36,7 +36,7 @@ angular.module('starter', ['ionic'])
         }
 
         $scope.updateTask = function(Id, status){
-          $http.put('http://190.39.179.26:3000/tasks/'+ Id, {
+          $http.put('http://192.168.0.137:3000/tasks/'+ Id, {
             status: status
           })
           .success(function(data, status, headers, config) {
